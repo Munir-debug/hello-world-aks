@@ -13,9 +13,14 @@ jobs:
     steps:
       - name: Awaiting manual approval
         run: echo "Manual approval granted via environment 'devops'"
+        
+  run-builddockerimage:
+    needs: approval
+    uses: ./.github/workflows/builddockerimage.yaml
+    secrets: inherit
 
   run-iac:
-    needs: approval
+    needs: run-builddockerimage
     uses: ./.github/workflows/infra.yaml
     secrets: inherit
 
