@@ -1,7 +1,7 @@
-name: IAC - Terraform Apply
+name: IAC - Terraform Destroy
 
 on:
-  workflow_call:
+  workflow_dispatch:
 
 jobs:
   terraform:
